@@ -11,28 +11,28 @@ let unitCol = document.querySelector("#units");
 
 console.log(unitCol);
 
+// HTMLElement.addEventListener( EVENT:String, CALLBACK:Function );
 unitCol.addEventListener( "input", handleClick);
-function handleClick( e ){
+function handleClick(e){
     // Total Profit: G = E * D
     // E
-    let unitProjected = e.target;
+    let unitsProjected = e.target;
     // G
-    let totalProfit = unitProjected.nextElementSibling.nextElementSibling;
+    let G = unitsProjected.nextElementSibling.nextElementSibling;
     //D
-    let profit = unitProjected.previousElementSibling;
+    let D = unitsProjected.previousElementSibling;
 
-    let valUnitProjected = unitProjected.textContent;
+    let valE = unitsProjected.textContent;
 
-    let valTotalProfit = unitProjected.nextElementSibling.nextElementSibling;
+    let valD = D.textContent;
 
-    let valProfit = profit.textContent;
-    valUnitProjected = parseFloat(valUnitProjected);
-    valProfit = parseInt(valProfit);
+    valE = parseFloat(valE);
+    valD = parseInt(valD);
 
-    console.log( typeof valUnitProjected, typeof valProfit)
+    console.log( typeof valE, typeof valD)
 
-    console.log( "totalProfit= ", valUnitProjected * valProfit)
-    profit.textContent = valUnitProjected * valProfit;
+    console.log( "G= ", valE * valD)
+    G.textContent = valE * valD;
 
 
 }
@@ -71,7 +71,6 @@ try{
     console.log(e, e.message);
 }*/
 
-console.log("End of code");
 /*navigator.getBattery().then((res)=>console.log(res))
 function handler(){
     console.log("Checking match");
@@ -85,3 +84,4 @@ setInterval(function(){
     // showBox();
 },1000 );
 */
+// console.log("End of code");

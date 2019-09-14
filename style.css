@@ -22,9 +22,11 @@ h1, h2{
 }
 th {
     background-color: #ddd;
+    text-align: center;
 }
 td {
     padding: 5px 10px;
+    text-align: center;
 }
 th, td {
     border: 1px solid gray;

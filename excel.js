@@ -1,87 +1,45 @@
-import { parse } from "querystring";
-
-// import { runInContext } from "vm";
-
-// Total Sales: F = E *C
+// Total Sales: F = E * C
 // Total Profit: G = E * D
-
-// console.log("Running");
+console.log("Running");
+// alert();
 
 let unitCol = document.querySelector("#units");
+console.log( unitCol );
 
-console.log(unitCol);
+// Adding an Event Listener on our Cell:
+// Syntax: HTMLElement.addEventListener( EVENT:String, CALLBACK:Function );
+unitCol.addEventListener( "input", handleClick );
 
-// HTMLElement.addEventListener( EVENT:String, CALLBACK:Function );
-unitCol.addEventListener( "input", handleClick);
-function handleClick(e){
-    // Total Profit: G = E * D
-    // E
-    let unitsProjected = e.target;
-    // G
-    let G = unitsProjected.nextElementSibling.nextElementSibling;
-    //D
-    let D = unitsProjected.previousElementSibling;
-
-    let valE = unitsProjected.textContent;
-
-    let valD = D.textContent;
-
-    valE = parseFloat(valE);
-    valD = parseInt(valD);
-
-    console.log( typeof valE, typeof valD)
-
-    console.log( "G= ", valE * valD)
-    G.textContent = valE * valD;
-
-
-}
-
-
-/* unitCol.style.backgroundColor = "red";
- unitCol.style.border = "2px solid black";
- unitCol.textContent = "595959"
-*/
-
-// HTMLElement.addEventListener( EVENT:String, CALLBACK:Function );
-/*unitCol.addEventListener( "click", handleClick);
+// 1) When Cell E has been changed: 
 function handleClick( e ){
-    // console.log("clicked");
-    console.log(1, e);
-    console.log(1, e.target);
-    console.log(1, e.target.textContent);
-    e.target.textContent = "WOW!"
-}*/
 
+    // 2) Get value of E
+    let unitsProjected = e.target;
+    let valE = unitsProjected.textContent;
+    valE = parseFloat( valE );  // Convert the text we got from the textContent into a floaring Number
 
-/* function demo(){
-    show();
-    function show(){
-        console.log("show");
+    // 4) Get value of cell D 
+    let D = unitsProjected.previousElementSibling;
+    let valD = D.textContent;
+    valD = parseFloat( valD );
+
+    // 5) Calculate E * D and update cell G
+    let G = unitsProjected.nextElementSibling.nextElementSibling;
+    console.log("valE: ", valE, typeof valE);
+    console.log("valD: ", valD, typeof valD);
+    console.log(Number.isNaN(valE));
+    if (Number.isNaN(valE)){
+        G.textContent = "";
+    }else{
+        G.textContent = valE * valD;
     }
-}*/
+    //parseFloat("2.3a22222") => 2.3 Number("2.3a22222") => NaN
 
-/* demo();
+    var reg = /^\d+S/;
+    "3434".match(reg);
+    reg.test("3434a");
 
-run();
-
-try{
-    run();
-}catch(e){
-    console.log(e, e.message);
-}*/
-
-/*navigator.getBattery().then((res)=>console.log(res))
-function handler(){
-    console.log("Checking match");
 }
-setInterval(handler, 1000);
 
-//Anonymous function
-setInterval(function(){
-    alert();
-    // run();
-    // showBox();
-},1000 );
-*/
-// console.log("End of code");
+console.log("End of Code");
+// END OF CODE
